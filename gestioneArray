@@ -1,0 +1,67 @@
+import random
+
+def stampa_vettore(v, messaggio="Vettore:"):
+    print(messaggio, v)
+
+def main():
+    scelta = input("Vuoi inserire il vettore (m) o generarlo casualmente (c)? ")
+    if scelta == "m":
+        v = list(map(int, input("Inserisci i numeri separati da spazio: ").split()))
+    else:
+        n = int(input("Quanti elementi vuoi generare? "))
+        v = [random.randint(1, 100) for _ in range(n)]
+
+    while True:
+        print("\n--- MENU ---")
+        print("1) Visualizza array")
+        print("2) Visualizza array invertito")
+        print("3) Somma e media")
+        print("4) Numeri pari")
+        print("5) Numeri dispari")
+        print("6) Ricerca numero")
+        print("7) Elimina numero")
+        print("8) Scambia a due a due")
+        print("9) Ordina array")
+
+        scelta = input("Scegli un'opzione: ")
+
+        if scelta == "1":
+            stampa_vettore(v)
+        elif scelta == "2":
+            stampa_vettore(v[::-1], "Vettore invertito:")
+        elif scelta == "3":
+            somma = sum(v)
+            media = somma / len(v) if v else 0
+            print(f"Somma = {somma}, Media = {media:.2f}")
+        elif scelta == "4":
+            stampa_vettore([x for x in v if x % 2 == 0], "Numeri pari:")
+        elif scelta == "5":
+            stampa_vettore([x for x in v if x % 2 != 0], "Numeri dispari:")
+        elif scelta == "6":
+            n = int(input("Inserisci il numero da cercare: "))
+            if n in v:
+                print(f"{n} trovato alla posizione {v.index(n)}")
+            else:
+                print(f"{n} non presente")
+        elif scelta == "7":
+            n = int(input("Inserisci il numero da eliminare: "))
+            if n in v:
+                v.remove(n)
+                stampa_vettore(v, "Nuovo vettore:")
+            else:
+                print(f"{n} non presente, nessuna eliminazione")
+        elif scelta == "8":
+            for i in range(0, len(v) - 1, 2):
+                v[i], v[i + 1] = v[i + 1], v[i]
+            stampa_vettore(v, "Vettore scambiato due a due:")
+        elif scelta == "9":
+            v.sort()
+            stampa_vettore(v, "Vettore ordinato:")
+        elif scelta == "0":
+            print("Uscita dal programma.")
+            break
+        else:
+            print("Valore inserito non valido, riprova.")
+
+if __name__ == "__main__":
+    main())
