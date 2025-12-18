@@ -64,4 +64,4 @@ def main():
             print("Valore inserito non valido, riprova.")
 
 if __name__ == "__main__":
-    main())
+    main()
