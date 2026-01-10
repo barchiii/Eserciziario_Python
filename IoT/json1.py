@@ -16,7 +16,7 @@ def on_temp(N, MIN, MAX):
 
 
 def save_readings_periodic(num_readings: int = 10, interval: float = 1.0, filename: str = 'json1.dbt',
-						   gradi_min: float = 10.0, gradi_max: float = 30.0,
+						   gradi_min: float = -50.0, gradi_max: float = 80.0,
 						   n_decimali: int = 1, sensor_id: str = "0021"):
 	"""Esegue misure periodiche e salva ogni misura come singolo oggetto JSON su una nuova riga (NDJSON).
 
